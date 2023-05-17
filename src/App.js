@@ -10,6 +10,8 @@ import SignUp from './components/Login/SignUp';
 import NoticeView from './components/Notice/NoticeView'
 import NoticeWrite from './components/Notice/NoticeWrite';
 import NoticeModify from './components/Notice/NoticeModify';
+import Mypage from './components/Mypage/MyPage';
+import MypageModify from './components/Mypage/MyPageModify';
 
 
 
@@ -26,6 +28,8 @@ function App() {
           <Route path='/notice/write' element={<NoticeWrite />} />
           <Route path='/notice/view' element={<NoticeView />} />
           <Route path='/notice/modify' element={<NoticeModify />} />
+          <Route path='/mypage' element={<Mypage />} />
+          <Route path='/mypage/modify' element={<MypageModify />} />
           
         </Routes>
       </BrowserRouter>
