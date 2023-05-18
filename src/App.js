@@ -26,10 +26,11 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/notice' element={<Notice />} />
           <Route path='/notice/write' element={<NoticeWrite />} />
-          <Route path='/notice/view' element={<NoticeView />} />
+          <Route path='/notice/view/:id' element={<NoticeView />} />
           <Route path='/notice/modify' element={<NoticeModify />} />
           <Route path='/mypage' element={<Mypage />} />
           <Route path='/mypage/modify' element={<MypageModify />} />
+          
           
         </Routes>
       </BrowserRouter>
