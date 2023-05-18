@@ -2,6 +2,7 @@ import React from 'react';
 // import { useEffect, useState } from 'react'
 // import axios from 'axios'
 import Header from "../Base/Header";
+import Footer from "../Base/Footer";
 
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Avatar } from '@mui/material';
@@ -83,6 +84,7 @@ const MyPageModify = () =>{
         onClick={() => noticeDeleteHandler()}
         >삭제하기
         </button> */}
+        <Footer/>
         </div>
     );
 }

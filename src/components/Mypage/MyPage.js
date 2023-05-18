@@ -206,10 +206,10 @@ const MyPage = () =>{
                 </div>
             </div>
 
-            <div className='title'>
+            {/* <div className='title'>
                 FOOTER
-            </div>
-
+            </div> */}
+            <Footer/>
         </div>
         
     );
