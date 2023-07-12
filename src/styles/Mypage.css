@@ -155,7 +155,9 @@ div #createdDate{
     padding-top:10px;
 }
 
-
+div.space{
+    height: 500px;
+}
 
 
 
