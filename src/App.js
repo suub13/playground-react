@@ -16,8 +16,7 @@ import NoticeModify from './components/Notice/NoticeModify';
 import Qna from './pages/Qna';
 import { QnaWrite } from './components/Qna/QnaWrite';
 import { QnaView } from './components/Qna/QnaView';
-import Mypage from './components/Mypage/MyPage';
-import MypageModify from './components/Mypage/MyPageModify';
+import QnaModify from './components/Qna/QnaModify';
 
 import MyPage from './components/Mypage/MyPage';
 import MyPageModify from './components/Mypage/MyPageModify';
