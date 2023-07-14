@@ -28,7 +28,7 @@ export default function Nav() {
       <nav>
         <div className="bar">
           <Link to="/home" style={{ textDecoration: 'none' }}>
-            <div className="logo">Play</div>
+            <div className="logo">PLAY</div>
           </Link>
           <div className="menu">
             <ul className="topTitle">
@@ -56,18 +56,28 @@ export default function Nav() {
                     {/* <li><button><i class="fa-solid fa-user"></i></button></li> */}
                     
 
-                        <div class="dropdown">
-                            <button data-bs-toggle="dropdown" aria-expanded="false">
-                            <li><i class="fa-solid fa-user"></i></li>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">프로필</a></li>
-                                <li><a class="dropdown-item" href="/" onClick={action}>로그아웃</a></li>
-                                <li><a class="dropdown-item" href="#">고객센터</a></li>
-                            </ul>
-                        </div>
-
-                </ul>
+            <div className="dropdown">
+              <button data-bs-toggle="dropdown" aria-expanded="false">
+                <li>
+                  <Avvvatars value={userId} style="shape" size={40}/>
+                </li>
+              </button>
+              <ul class="dropdown-menu" style={{ textDecoration: 'none' }} >
+                <li>
+                  <p style={{ margin: "18px" }}><b>{userId}</b></p>
+                </li>
+                <li style={{ marginBottom: 10}}>
+                  <Link to="/mypage" className="dropdown-item" > 프로필 </Link>
+                </li>
+                <li style={{ marginBottom: 10}}>
+                    <Link to="/" className="dropdown-item" onClick={action}> 로그아웃 </Link>
+                </li>
+                {/* <li>
+                  <a className="dropdown-item" href="#">
+                    고객센터
+                  </a>
+                </li> */}
+              </ul>
             </div>
             
         </nav>

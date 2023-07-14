@@ -11,10 +11,13 @@ import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import Button from '@mui/material/Button';
 import '../styles/Qna/Qna.css';
+import Stack from "@mui/material/Stack";
+import Pagination from "@mui/material/Pagination";
 
 const Qna = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     axios({
@@ -22,8 +25,9 @@ const Qna = () => {
       url: '/api/qna/question/list',
     })
       .then((res) => {
-        console.log(res.data);
-        setQuestions(res.data);
+        console.log(res.data.content);
+        setQuestions(res.data.content);
+        setTotalPages(res.data.totalPages);
       })
       .catch((err) => {
         console.log(err);
@@ -32,6 +36,16 @@ const Qna = () => {
 
   const onClickCreateQnaHandler = () => {
     navigate('/qna/write');
+  };
+
+  const pageButtonHandler = async (event, page) => {
+    const questionPage = await axios.get(
+        '/api/qna/question/list', {
+          params: {
+            page: page - 1
+          }
+        });
+    setQuestions(questionPage.data.content);
   };
 
   const onClickQnaViewHandler = (questionId) => {
@@ -68,7 +82,7 @@ const Qna = () => {
               <TableRow key={item.id} onClick={() => onClickQnaViewHandler(item.id)} className="notice-table-row">
                 <TableCell className="notice-id">{item.id}</TableCell>
                 <TableCell>{item.title}</TableCell>
-                <TableCell>{item.member.name}</TableCell>
+                <TableCell>{item.member.nickname}</TableCell>
                 {/* <td>{item.viewCount}</td> */}
                 <TableCell className="notice-createdDate">
                   <Moment format="YYYY년 MM월 DD일 HH:mm">{item.createdDate}</Moment>
@@ -90,6 +104,9 @@ const Qna = () => {
           </Button>
         </div>
       </div>
+      <Stack spacing={2} alignItems="center">
+        <Pagination count={totalPages} onChange={pageButtonHandler}/>
+      </Stack>
       {/* <Footer /> */}
     </div>
   );

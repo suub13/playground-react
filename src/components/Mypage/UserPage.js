@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import axios from '../Token/Interceptor';
 
@@ -52,7 +52,7 @@ function a11yProps(index) {
   };
 }
 
-const MyPage = () => {
+const UserPage = () => {
   const [value, setValue] = React.useState(0);
   const [mypage, setMypage] = useState([]);
   const [followMyPage, setFollowMyPage] = useState([]);
@@ -63,6 +63,11 @@ const MyPage = () => {
   // const [myPageQuestionDtoList, setMyPageQuestionDtoList] = useState([]);
 
   const navigate = useNavigate();
+
+  const location = useLocation();
+  const getUserId = location.state.id;
+
+  console.log(getUserId);
 
   const feedViewHandler = (id) => {
     navigate(`/feed/view/${id}`, {
@@ -84,7 +89,7 @@ const MyPage = () => {
   useEffect(() => {
     axios({
       method: 'GET',
-      url: '/api/mypage',
+      url: `/api/mypage/${getUserId}`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -117,7 +122,7 @@ const MyPage = () => {
         <Box sx={{ display: 'flex', justifyContent: 'center', marginRight: '100px' }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             {mypage && followMyPage && (
-              <Card sx={{ width: 300, height: 450, minWidth: 275, marginTop: '80px', backgroundColor: '#EDF4FF' }}>
+              <Card sx={{ width: 300, height: 400, minWidth: 275, marginTop: '80px', backgroundColor: '#EDF4FF' }}>
                 <CardContent>
                   <Typography
                     variant="h5"
@@ -147,11 +152,6 @@ const MyPage = () => {
 
                   <Typography variant="body2">{mypage.myskill}</Typography>
                 </CardContent>
-                <CardActions sx={{ justifyContent: 'center' }}>
-                  <Button variant="contained">
-                    <Link to="/mypage/modify">비밀번호 수정</Link>
-                  </Button>
-                </CardActions>
               </Card>
             )}
 
@@ -261,4 +261,4 @@ const MyPage = () => {
   );
 };
 
-export default MyPage;
+export default UserPage;
